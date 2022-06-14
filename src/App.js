@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react'
+import Form from "./components/Form"
+import Table from "./components/Table"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    state= {
+      expenses: []
+    }
+
+removeExpense = (index) => {
+  const {expenses} = this.state
+
+  this.setState({
+    expenses: expenses.filter((expense, i) => {
+      return i !== index
+    })
+  })
 }
 
-export default App;
+handleSubmit = expense => {
+  this.setState({expenses: [...this.state.expenses, expense]})
+}
+
+  render() {
+    const {expenses} = this.state
+
+    return(
+    <div className="container">
+      <h1>Expense Tracker</h1>
+      <Form handleSubmit={this.handleSubmit} />
+      <h3>Add new expense</h3>
+      <Table
+            expenseData={expenses}
+            removeExpense={this.removeExpense}
+      />
+      
+    </div>
+  )
+}
+}
+export default App
