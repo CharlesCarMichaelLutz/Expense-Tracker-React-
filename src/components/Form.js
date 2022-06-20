@@ -4,22 +4,20 @@ class Form extends Component {
   constructor(props){
     super(props)
 
-    this.initialState = {
+    this.state = {
       date:'',
       description:'',
       place:'',
       amount:''
     }
 
-    this.state = this.initialState
-
   }
 
 handleChange = event => {
-  const { date, value } = event.target;
+  const { name, date } = event.target;
 
   this.setState({
-    [date] : value
+    [name] : date
   })
 }
 
@@ -27,8 +25,16 @@ onFormSubmit = (event) => {
   event.preventDefault();
 
   this.props.handleSubmit(this.state)
-  this.setState(this.initialState)
+  this.clearForm();
+}
 
+clearForm = () => {
+  this.setState({
+      date:'',
+      description:'',
+      place:'',
+      amount:''
+  })
 }
 
 render() {
@@ -40,30 +46,26 @@ render() {
       <input 
           type="date"
           name="date"
-          className="date"
           value={date}
           onChange={this.handleChange} />
       <label for="description">Description:</label>
       <input 
           type="text" 
-          className="description" 
-          id="description"
+          name="description"       
           value={description}
           onChange={this.handleChange}
           placeholder='enter description' />
       <label for="place">Place:</label>
       <input 
-          type="text" 
-          className="place" 
-          id="place"
+          type="text"
+          name="place"
           value={place}
           onChange={this.handleChange}
           placeholder='enter place' />
       <label for="amount">Amount:</label>
       <input 
-          type="number" 
-          className="amount" 
-          id="amount"
+          type="number"         
+          name="amount"
           value={amount}
           onChange={this.handleChange}
           placeholder='enter amount' />

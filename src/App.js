@@ -17,8 +17,9 @@ removeExpense = (index) => {
   })
 }
 
+
 handleSubmit = expense => {
-  this.setState({expenses: [...this.state.expenses, expense]})
+  this.setState({expenses: [...this.state.expenses,expense]})
 }
 
   render() {

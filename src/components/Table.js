@@ -19,14 +19,14 @@ const TableBody = (props) => {
     (row, index) => { 
   return(
       <tr key={index}>
-        <td>{props.date}</td>
+        <td>{row.date}</td>
         <td>{row.description}</td>
         <td>{row.place}</td>
         <td>{row.amount}</td>
         <td>
           <button onClick={() => props.removeExpense(index)}>Delete</button>
         </td>
-      </tr>
+      </tr>    
   )
 })
   return <tbody>{rows}</tbody>
