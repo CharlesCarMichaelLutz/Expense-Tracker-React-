@@ -2,33 +2,33 @@ import React from 'react';
 
 const Form = (props) => {
   return(
-    <form onSubmit={this.onFormSubmit}>
+    <form onSubmit={props.handleSubmit}>
       <label >Date:</label>
       <input 
           type="date"
           name="date"
-          value={date}
-          onChange={this.handleChange} />
+          value={props.date}
+          onChange={props.handleChange} />
       <label >Description:</label>
       <input 
           type="text" 
           name="description"       
-          value={description}
-          onChange={this.handleChange}
+          value={props.description}
+          onChange={props.handleChange}
           placeholder='enter description' />
       <label >Place:</label>
       <input 
           type="text"
           name="place"
-          value={place}
-          onChange={this.handleChange}
+          value={props.place}
+          onChange={props.handleChange}
           placeholder='enter place' />
       <label >Amount:</label>
       <input 
           type="number"         
           name="amount"
-          value={amount}
-          onChange={this.handleChange}
+          value={props.amount}
+          onChange={props.handleChange}
           placeholder='enter amount' />
       <input 
           type="submit"

@@ -1,44 +1,34 @@
 import React from 'react';
 
-const TableHeader = () => {
-  return(
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Description</th>
-          <th>Place</th>
-          <th>Amount</th>
-          <th>Delete</th>
-        </tr>
-      </thead> 
-  )
-}
-
-const TableBody = (props) => {
-  const rows = props.expenseData.map(
-    (row, index) => { 
-  return(
-      <tr key={index}>
-        <td>{row.date}</td>
-        <td>{row.description}</td>
-        <td>{row.place}</td>
-        <td>{row.amount}</td>
-        <td>
-          <button onClick={() => props.removeExpense(index)}>Delete</button>
-        </td>
-      </tr>    
-  )
-})
-  return <tbody>{rows}</tbody>
-}
-
 const Table = (props) => {
-  const { expenseData, removeExpense} = props
       return(
-        <table>
-            <TableHeader />
-            <TableBody expenseData={expenseData} removeExpense={removeExpense} />
-        </table>
+      <table>
+        <thead>
+           <tr>
+             <th>Date</th>
+             <th>Description</th>
+             <th>Place</th>
+             <th>Amount</th>
+             <th>Delete</th>
+           </tr>
+        </thead> 
+        <tbody>
+          {props.expenses.map(expense => {
+            return (
+           <tr key={expense.id}>
+             <td>{expense.date}</td>
+             <td>{expense.description}</td>
+             <td>{expense.place}</td>
+             <td>{expense.amount}</td>
+             <td>
+               <button onClick={() => props.removeExpense(expense.id)}>Delete</button>
+             </td>
+           </tr> 
+            )
+          })
+          }
+        </tbody>
+      </table>
       )
 }
 

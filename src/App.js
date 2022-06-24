@@ -60,10 +60,14 @@ class App extends Component {
     return(
     <div className="container">
       <h1>Expense Tracker</h1>
-      <Form handleSubmit={this.handleSubmit} state={this.state} />
+      <Form 
+          handleSubmit={this.handleSubmit} 
+          state={this.state} 
+          handleChange={this.handleChange}
+        />
       <h3>Add new expense</h3>
       <Table
-            expenseData={expenses}
+            expenses={this.state.expenses}
             removeExpense={this.removeExpense}
       />
       
