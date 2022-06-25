@@ -26,6 +26,8 @@ class App extends Component {
       [name] : value
     })
   }
+
+  const 
   
   handleSubmit = (e) => {
     e.preventDefault()
@@ -38,13 +40,12 @@ class App extends Component {
     }
 
     this.setState({ 
-        expenses: [...this.state.expenses, freshExpense],
-        date: '',
-        description: '',
-        place: '',
-        amount: ''  
+        expenses: [...this.state.expenses, freshExpense]
       })
-  }
+
+      e.target.reset()
+      this.clearForm()     
+}
   
   removeExpense = (id) => {
     const expenses = this.state.expenses.filter((expense) => expense.id !== id)
@@ -54,10 +55,18 @@ class App extends Component {
     })
   }
 
-  render() {
-    const {expenses} = this.state
+  clearForm = () => {
+    this.setState({
+    date:'',
+    description:'',
+    place:'',
+    amount:''
+  })
 
-    return(
+  } 
+
+render() {
+    return (
     <div className="container">
       <h1>Expense Tracker</h1>
       <Form 
@@ -75,4 +84,5 @@ class App extends Component {
   )
 }
 }
+
 export default App

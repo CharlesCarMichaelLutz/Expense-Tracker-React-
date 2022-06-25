@@ -10,7 +10,35 @@ form {
   justify-content: center;
   align-items: center;
   background-color: darkorange;
-  font-size: large;
+  font-size:x-large;
   box-sizing: border-box;
   display: flex;
+}
+
+.submit{
+  color:black;
+  background-color: yellowgreen;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 9px;
+}
+
+.delete--button{
+  color: black;
+  background-color: yellowgreen;
+  box-shadow: 2px 5px black;
+}
+
+.expense--table {
+  box-sizing: border-box;
+  width:1300px;
+  justify-content: center;
+  font-size: large;
+}
+
+.expense--table tr:nth-child(even){background-color: lightslategray;}
+
+.expense--table th{
+  background-color: orange;
+  color: black;
 }

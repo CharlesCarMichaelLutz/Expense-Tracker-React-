@@ -2,7 +2,7 @@ import React from 'react';
 
 const Table = (props) => {
       return(
-      <table>
+      <table className="expense--table">
         <thead>
            <tr>
              <th>Date</th>
@@ -21,7 +21,7 @@ const Table = (props) => {
              <td>{expense.place}</td>
              <td>{expense.amount}</td>
              <td>
-               <button onClick={() => props.removeExpense(expense.id)}>Delete</button>
+               <button className='delete--button' onClick={() => props.removeExpense(expense.id)}>Delete</button>
              </td>
            </tr> 
             )
