@@ -4,7 +4,7 @@
 An awesome Expense Tracker developed using the React library, Vanilla JavaScript, and CSS.
 
 
-#### check it out [here]()
+#### check it out [here](https://charles-carm.github.io/Expense-Tracker-React-/)
 
 ---
 
