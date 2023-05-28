@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Table = (props) => {
+const Table = ({tableData, removeExpense}) => {
       return(
       <table className="expense--table">
         <thead>
@@ -13,7 +13,7 @@ const Table = (props) => {
            </tr>
         </thead> 
         <tbody>
-          {props.expenses.map(expense => {
+          {tableData.map(expense => {
             return (
            <tr key={expense.id}>
              <td>{expense.date}</td>
@@ -21,7 +21,7 @@ const Table = (props) => {
              <td>{expense.place}</td>
              <td>{expense.amount}</td>
              <td>
-               <button className='delete--button' onClick={() => props.removeExpense(expense.id)}>Delete</button>
+               <button className='delete--button' onClick={() => removeExpense(expense.id)}>Delete</button>
              </td>
            </tr> 
             )

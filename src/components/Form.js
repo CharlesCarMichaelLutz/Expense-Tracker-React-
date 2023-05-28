@@ -1,34 +1,37 @@
 import React from 'react';
 
-const Form = (props) => {
+const Form = ({formData, handleSubmit, handleChange}) => {
   return(
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={(e) => {
+      e.preventDefault()
+      handleSubmit()
+    }}>
       <label >Date:</label>
       <input 
           type="date"  
           name="date"
-          value={props.date}  required
-          onChange={props.handleChange} />
+          value={formData.date}  required
+          onChange={handleChange} />
       <label >Description:</label>
       <input 
           type="text" 
           name="description"       
-          value={props.description} required
-          onChange={props.handleChange}
+          value={formData.description} required
+          onChange={handleChange}
           placeholder='enter description' />
       <label >Place:</label>
       <input 
           type="text" 
           name="place"
-          value={props.place} required
-          onChange={props.handleChange}
+          value={formData.place} required
+          onChange={handleChange}
           placeholder='enter place' />
       <label >Amount:</label>
       <input 
           type="number"         
           name="amount"
-          value={props.amount}  required
-          onChange={props.handleChange}
+          value={formData.amount}  required
+          onChange={handleChange}
           placeholder='enter amount' />
       <input 
           type="submit"

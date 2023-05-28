@@ -1,88 +1,63 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import Form from "./components/Form"
 import Table from "./components/Table"
+import Header from './components/Header'
 
-class App extends Component {
-    constructor(props){
-      super(props)
+function App() {
+  const [formData, setFormData] = useState({
+    date: '',
+    description: '',
+    place: '',
+    amount: ''
+  })
+  const [tableData, setTableData] = useState([])
   
-      this.state = {
-        expenses: [],
-        date:'',
-        description:'',
-        place:'',
-        amount:''
-      }
-
-      this.removeExpense = this.removeExpense.bind(this)
-      this.handleSubmit = this.handleSubmit.bind(this)
-      this.handleChange = this.handleChange.bind(this)
-    }
-  
-  handleChange = (e) => {
+  function handleChange(e) {
     const { name, value } = e.target;
-  
-    this.setState({
-      [name] : value
+    setFormData((prevState) => {
+      return {...prevState, [name]: value}
     })
   }
 
-  const 
-  
-  handleSubmit = (e) => {
-    e.preventDefault()
+  function handleSubmit() {
     const freshExpense = {
       id: Date.now(),
-      date: this.state.date,
-      description: this.state.description,
-      place: this.state.place,
-      amount: this.state.amount
+      date: formData.date,
+      description: formData.description,
+      place: formData.place,
+      amount: formData.amount
     }
 
-    this.setState({ 
-        expenses: [...this.state.expenses, freshExpense]
-      })
-
-      e.target.reset()
-      this.clearForm()     
-}
+    setTableData((prevState) => [...prevState, freshExpense])
+    clearForm()     
+  }
   
-  removeExpense = (id) => {
-    const expenses = this.state.expenses.filter((expense) => expense.id !== id)
-
-    this.setState({
-      expenses:  expenses
-    })
+  function removeExpense(id) {
+    setTableData((prevState) => prevState.filter((expense) => expense.id !== id))
   }
 
-  clearForm = () => {
-    this.setState({
-    date:'',
-    description:'',
-    place:'',
-    amount:''
-  })
-
-  } 
-
-render() {
+  function clearForm() {
+    setFormData({
+      date:'',
+      description:'',
+      place:'',
+      amount:''
+    })
+  }
     return (
     <div className="container">
-      <h1>Expense Tracker</h1>
+      <Header />
       <Form 
-          handleSubmit={this.handleSubmit} 
-          state={this.state} 
-          handleChange={this.handleChange}
+          handleSubmit={handleSubmit} 
+          formData={formData} 
+          handleChange={handleChange}
         />
-      <h3>Add new expense</h3>
       <Table
-            expenses={this.state.expenses}
-            removeExpense={this.removeExpense}
-      />
-      
+            tableData={tableData}
+            removeExpense={removeExpense}
+      />     
     </div>
   )
-}
 }
 
 export default App
