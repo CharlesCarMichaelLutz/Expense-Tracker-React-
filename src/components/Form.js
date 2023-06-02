@@ -1,6 +1,8 @@
 import React from 'react';
+import useForm from '../hooks/useForm';
 
-const Form = ({formData, handleSubmit, handleChange}) => {
+const Form = ({setTableData}) => {
+  const {formData, handleChange, handleSubmit, clearForm} = useForm(setTableData)
   return(
     <form onSubmit={(e) => {
       e.preventDefault()
@@ -37,6 +39,7 @@ const Form = ({formData, handleSubmit, handleChange}) => {
           type="submit"
           className="submit"
           id="submit" />
+      <button onClick={clearForm}>Reset</button>
     </form>
   )
 }

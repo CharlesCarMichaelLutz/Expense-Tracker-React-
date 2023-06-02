@@ -21,12 +21,16 @@ const Table = ({tableData, removeExpense}) => {
              <td>{expense.place}</td>
              <td>{expense.amount}</td>
              <td>
-               <button className='delete--button' onClick={() => removeExpense(expense.id)}>Delete</button>
+               <button 
+                className='delete--button' 
+                onClick={() => removeExpense(expense.id)}
+              >
+                Delete
+               </button>
              </td>
            </tr> 
             )
-          })
-          }
+          })}
         </tbody>
       </table>
       )
